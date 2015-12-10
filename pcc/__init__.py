@@ -33,7 +33,6 @@ class ReferenceCountedConnection(object):
     def _close(self):
         # noinspection PyBroadException
         try:
-            print("Closing connection now")
             self.conn.close()
         except:
             pass
@@ -58,7 +57,6 @@ class RefreshingConnectionCache(object):
                     self._active = None
 
                 # and create a new one
-                print("Connecting now")
                 active = ReferenceCountedConnection(**self._kwargs)
                 self._active = active
                 self._active_deadline = time.time() + self._lifetime
